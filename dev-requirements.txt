@@ -1,0 +1,4 @@
+PyAudio==0.2.9
+pygame==1.9.2a0
+RPi.GPIO==0.6.2
+Wave==0.0.2

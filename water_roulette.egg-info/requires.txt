@@ -1,0 +1,4 @@
+PyAudio
+pygame
+RPi.GPIO
+Wave
