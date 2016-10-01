@@ -1,9 +1,6 @@
-import cannons
+from . import cannons, menu, audio
 import random
-import time
-import menu
-import Queue
-import audio
+
 
 NUMBER_OF_CANNONS = []
 for x in range(70):
@@ -15,6 +12,8 @@ for x in range(10):
 
 FIRE_DURATION = 1
 
+PAUSE = menu.pause_callback
+
 def play_round(in_q):
     cannon_quantity = random.choice(NUMBER_OF_CANNONS)
     cannon_list = [1, 2, 3, 4, 5, 6]
@@ -23,36 +22,38 @@ def play_round(in_q):
         cannon = random.choice(cannon_list)
         choosen_cannons.append(cannon)
         cannon_list.remove(cannon)
-    menu.pause_callback(in_q, 'game')
+    PAUSE(in_q, 'game')
     announce_round(in_q, 'wait')
     choosen_cannons = cannons.Cannon(choosen_cannons, FIRE_DURATION)
     fire_tease(in_q)
     choosen_cannons.fire()
 
 def fire_tease(in_q):
-    clips = ['gameover', 'kraken', 'redalert', 'lucky', 'turret-target']
-    clip = audio.load(random.choice(clips))
-    clip.play()
+    clips = ['gameover', 'kraken', 'redalert', 
+             'lucky', 'turret-target', 'firewhenready']
+    clip = audio.play(random.choice(clips), 2)
     while clip.get_busy():
-        menu.pause_callback(in_q, 'game')
+        PAUSE(in_q, 'game', clip=clip)
+        clip.unpause()
         continue
+
 
 def announce_round(in_q, round):
     if round == 'wait':
-        clip = audio.load('ticktock')
+        clip = audio.play('ticktock', 2)
     else:
-        clip = audio.load('r{}'.format(round))
-    clip.play()
+        clip = audio.play('r{}'.format(round), 2)
     while clip.get_busy():
-        menu.pause_callback(in_q, 'game')
+        PAUSE(in_q, 'game', clip=clip)
+        clip.unpause()
         continue
 
 def play(in_q):
     rounds = 1
-    start = audio.load('duckhunt')
-    start.play()
+    start = audio.play('duckhunt', 2)
     while start.get_busy():
-        menu.pause_callback(in_q, 'game')
+        PAUSE(in_q, 'game', clip=start)
+        start.unpause()
         continue
     while rounds < 11:
         announce_round(in_q, rounds)

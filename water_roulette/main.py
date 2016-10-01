@@ -1,10 +1,4 @@
-import cannons
-import audio
-import menu
-import time
-import demo
-import game
-
+from . import audio, menu, demo, game
 
 def wait_input():
     switcher = {
@@ -18,6 +12,6 @@ def wait_input():
             selection_thread.start()
             selection_thread.join()
 
-audio.load('system').play()
+audio.play('system', 1)
 
 wait_input()

@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='water_roulette',
-      version='0.8.1',
+      version='0.9.1',
       description='Water Cannon game for the Raspberry Pi',
       url='http://github.com/prestonr83/water_roulette',
       author='Preston Rodriguez',

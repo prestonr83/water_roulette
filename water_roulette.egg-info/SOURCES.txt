@@ -7,7 +7,6 @@ water_roulette/cannons.py
 water_roulette/demo.py
 water_roulette/game.py
 water_roulette/main.py
-water_roulette/main_test.py
 water_roulette/menu.py
 water_roulette.egg-info/PKG-INFO
 water_roulette.egg-info/SOURCES.txt
@@ -18,7 +17,7 @@ water_roulette.egg-info/top_level.txt
 water_roulette/media/demo.wav
 water_roulette/media/duckhunt.wav
 water_roulette/media/exit.wav
-water_roulette/media/firewhenready2.wav
+water_roulette/media/firewhenready.wav
 water_roulette/media/gameover.wav
 water_roulette/media/kraken.wav
 water_roulette/media/loading.wav
