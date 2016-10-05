@@ -2,13 +2,7 @@ from . import cannons, menu, audio
 import random
 
 
-NUMBER_OF_CANNONS = []
-for x in range(70):
-    NUMBER_OF_CANNONS.append(1)
-for x in range(20):
-    NUMBER_OF_CANNONS.append(3)
-for x in range(10):
-    NUMBER_OF_CANNONS.append(6)
+NUMBER_OF_CANNONS = [1, 1, 1, 1, 1, 1, 1, 2, 2, 2]
 
 FIRE_DURATION = 1
 

@@ -30,6 +30,9 @@ def timeout():
 
 def button_callback(channel):
     global BUTTON_TIME
+    time.sleep(0.1)         # need to filter out the false positive of some power fluctuation
+    if cannons.GPIO.input(7) != cannons.GPIO.LOW:
+        return
     if time.time() - BUTTON_TIME > .2:
         BUTTON_TIME = time.time()
         MENU.timeout = False
@@ -120,6 +123,6 @@ def pause_callback(in_q, selection, clip=None):
 
 MENU = MenuOptions()
 
-cannons.GPIO.setup(25, cannons.GPIO.IN, pull_up_down=cannons.GPIO.PUD_UP)
-cannons.GPIO.add_event_detect(25, cannons.GPIO.FALLING, 
-                              callback=button_callback, bouncetime=200)
+cannons.GPIO.setup(7, cannons.GPIO.IN)
+cannons.GPIO.add_event_detect(7, cannons.GPIO.FALLING, 
+                              callback=button_callback, bouncetime=200) 
